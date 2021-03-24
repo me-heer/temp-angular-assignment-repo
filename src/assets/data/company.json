@@ -1,0 +1,71 @@
+[
+  {
+    "id": "1",
+    "email": "test@test.com",
+    "name": "Google",
+    "totalEmployee": "2",
+    "address": "Ahmedabad",
+    "isCompanyActive": true,
+    "totalBranch": "2",
+    "companyBranch": [
+      {
+        "branchId": "1",
+        "branchName": "CH",
+        "address": "Ahmedabad"
+      },
+      {
+        "branchId": "2",
+        "branchName": "CH",
+        "address": "Gandhinagar"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "email": "test@test.com",
+    "name": "Apple",
+    "totalEmployee": "2",
+    "address": "Rajkot",
+    "isCompanyActive": true,
+    "totalBranch": "1",
+    "companyBranch": [
+      {
+        "branchId": "1",
+        "branchName": "RJ",
+        "address": "Rajkot"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "email": "test@test.com",
+    "name": "Microsoft",
+    "totalEmployee": "2",
+    "address": "Rajkot",
+    "isCompanyActive": true,
+    "totalBranch": "1",
+    "companyBranch": [
+      {
+        "branchId": "1",
+        "branchName": "RJ",
+        "address": "Rajkot"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "email": "test@test.com",
+    "name": "Amazon",
+    "totalEmployee": "2",
+    "address": "Rajkot",
+    "isCompanyActive": true,
+    "totalBranch": "1",
+    "companyBranch": [
+      {
+        "branchId": "1",
+        "branchName": "RJ",
+        "address": "Rajkot"
+      }
+    ]
+  }
+]

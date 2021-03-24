@@ -1,1 +1,66 @@
-<p>list works!</p>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Companies List
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th>Total Employees</th>
+                        <th>Address</th>
+                        <th>Is Company Active?</th>
+                        <th>Total Branch</th>
+                        <th>Company Branch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let company of companies">
+                        <td>{{company.id}}</td>
+                        <td>{{company.email}}</td>
+                        <td>{{company.name}}</td>
+                        <td>{{company.totalEmployee}}</td>
+                        <td>{{company.address}}</td>
+                        <td>{{company.isCompanyActive}}</td>
+                        <td>{{company.totalBranch}}</td>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Branch ID
+                                        </th>
+                                        <th>
+                                            Branch Name
+                                        </th>
+                                        <th>
+                                            Address
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let branch of company.companyBranch">
+                                        <td>
+                                            {{branch.branchId}}
+                                        </td>
+                                        <td>
+                                            {{branch.branchName}}
+                                        </td>
+                                        <td>
+                                            {{branch.address}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
