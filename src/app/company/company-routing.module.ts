@@ -7,20 +7,20 @@ import { ListComponent } from './list/list.component';
 import { CompanyComponent } from './company.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: CompanyComponent,
-        children:[
-            { path :'list',component:ListComponent },
-            { path:'add',component:AddComponent }, 
-            { path:'edit',component:EditComponent },
-            { path:'view',component:ViewComponent }
-        ]
-    }
+  {
+    path: '',
+    component: CompanyComponent,
+    children: [
+      { path: 'list', component: ListComponent },
+      { path: 'add', component: AddComponent },
+      { path: 'edit', component: EditComponent },
+      { path: 'view', component: ViewComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CompanyRoutingModule { }
+export class CompanyRoutingModule {}

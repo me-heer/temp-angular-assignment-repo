@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Company } from './company';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class CommunicatorService {
-  companies: Observable<Company[]>;
 
-  constructor(private http: HttpClient) {
-    this.companies = <Observable<Company[]>>this.http.get('../assets/data/company.json');
+  constructor(private http: HttpClient, private dataService: DataService) {
   }
 
   getCompanies(): Observable<Company[]>{
-    this.companies = <Observable<Company[]>>this.http.get('../assets/data/company.json');
-    return this.companies;
+    return this.dataService.getCompanies();
+  }
+
+  addCompany(company: Company): void{
+    this.dataService.addCompany(company);
   }
 
 }

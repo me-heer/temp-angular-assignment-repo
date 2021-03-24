@@ -7,12 +7,14 @@ import { ViewComponent } from './view/view.component';
 import { CompanyComponent } from './company.component';
 import { CompanyRoutingModule } from './company-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [CompanyComponent, AddComponent, EditComponent, ListComponent, ViewComponent, NavigationComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     CompanyRoutingModule
   ]
 })

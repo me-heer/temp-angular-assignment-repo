@@ -1,1 +1,48 @@
-<p>add works!</p>
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+  <label>
+    ID:
+    <input type="number" formControlName="id" />
+  </label>
+
+  <label>
+    Email
+    <input type="email" formControlName="email" />
+  </label>
+
+  <label>
+    Name
+    <input type="text" formControlName="name" />
+  </label>
+
+  <label>
+    Total Employees
+    <input type="number" formControlName="totalEmployee" />
+  </label>
+
+  <label>
+    Address
+    <input type="text" formControlName="address" />
+  </label>
+
+  <label>
+    Is Company Active?
+    <input type="checkbox" formControlName="isCompanyActive" />
+  </label>
+
+  <label>
+    Total Branch
+    <input type="number" formControlName="totalBranch" />
+  </label>
+
+  <label>
+      Branches
+  </label>
+  <div formGroupName="companyBranches">
+        <input type="number" formControlName="branchId">
+        <input type="text" formControlName="branchName">
+        <input type="text" formControlName="address">
+  </div>
+  <button type="submit" [disabled]="!companyForm.valid">Submit</button>
+</form>
+
+<a routerLink="../list" >LIST LINK</a>
