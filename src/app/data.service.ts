@@ -1,30 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { CommunicatorService } from './communicator.service';
 import { Company } from './company';
-import { CompanyBranch } from './branch';
-import * as companies from '../assets/data/company.json'; // This import style requires "esModuleInterop", see "side notes"
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   db: Company[] = [];
+  baseURL: string = 'http://localhost:3000/';
 
-  constructor() {
-    this.db = (companies as any).default;
+  constructor(private http: HttpClient) {
+    this.http
+      .get<Company[]>(this.baseURL + 'company')
+      .subscribe((data) => (this.db = data));
   }
 
   getCompanies(): Observable<Company[]> {
-    const companies = of(this.db);
-    return companies;
+    return this.http.get<Company[]>(this.baseURL + 'company');
   }
 
   getCompany(id: number): Observable<Company> {
-    return of(this.db.find(c => c.id == id));
+    return this.http.get<Company>(this.baseURL + 'company/'+ id);
   }
 
-  addCompany(company: Company): void{
+  addCompany(company: Company): void {
     this.db.push(company);
+  }
+
+  postCompany(company: Company): Observable<any>{
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(company);
+    console.log(body)
+    return this.http.post(this.baseURL + 'company', body,{'headers':headers})
   }
 }

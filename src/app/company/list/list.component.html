@@ -1,79 +1,82 @@
 <div class="container-fluid">
-    <h1 class="mt-4">List</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Dashboard</li>
-        <li class="breadcrumb-item active">List</li>
-    </ol>
-    
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table mr-1"></i>
-            Companies List
-        </div>
-    
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>ID</th>
-                            <th>Email</th>
-                            <th>Name</th>
-                            <th>Total Employees</th>
-                            <th>Address</th>
-                            <th>Is Company Active?</th>
-                            <th>Branches</th>
-                            <th>Company Branch</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let company of companies">
-                            <td>{{company.id}}</td>
-                            <td>{{company.email}}</td>
-                            <td>{{company.name}}</td>
-                            <td>{{company.totalEmployee}}</td>
-                            <td>{{company.address}}</td>
-                            <td>{{company.isCompanyActive}}</td>
-                            <td>{{company.totalBranch}}</td>
-                            <td>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                Branch ID
-                                            </th>
-                                            <th>
-                                                Branch Name
-                                            </th>
-                                            <th>
-                                                Address
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let branch of company.companyBranch">
-                                            <td>
-                                                {{branch.branchId}}
-                                            </td>
-                                            <td>
-                                                {{branch.branchName}}
-                                            </td>
-                                            <td>
-                                                {{branch.address}}
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                            <td>
-                                <button class="btn btn-outline-primary btn-sm" [routerLink]= "['/company/edit']" [queryParams]="{ id:company.id}" value="Edit">Edit</button> |
-                                <button class="btn btn-danger btn-sm" (click)="delete(company.id)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+  <h1 class="mt-4">List</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">List</li>
+  </ol>
+
+  <div class="table-responsive">
+    <table
+      class="table table-bordered table-hover"
+      id="dataTable"
+      width="100%"
+      cellspacing="0"
+    >
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Total Employees</th>
+          <th>Address</th>
+          <th>Is Company Active?</th>
+          <th>Branches</th>
+          <th>Company Branch</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{ company.id }}</td>
+          <td>{{ company.email }}</td>
+          <td>{{ company.name }}</td>
+          <td>{{ company.totalEmployee }}</td>
+          <td>{{ company.address }}</td>
+          <td>{{ company.isCompanyActive }}</td>
+          <td>{{ company.totalBranch }}</td>
+          <td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Branch ID</th>
+                  <th>Branch Name</th>
+                  <th>Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let branch of company.companyBranch">
+                  <td>
+                    {{ branch.branchId }}
+                  </td>
+                  <td>
+                    {{ branch.branchName }}
+                  </td>
+                  <td>
+                    {{ branch.address }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <div style="position: relative;
+            display: inline-flex;
+            vertical-align: middle;" class="px-1">
+              <a
+                class="btn btn-outline-primary mx-2"
+                [routerLink]="['/company/edit']"
+                [queryParams]="{ id: company.id }"
+                value="Edit"
+              >
+                Edit
+              </a>
+              <a class="btn btn-danger mx-2" (click)="delete(company.id)">
+                Delete
+              </a>
             </div>
-        </div>
-    </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

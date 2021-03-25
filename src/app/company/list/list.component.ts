@@ -10,10 +10,11 @@ import { CommunicatorService } from '../../communicator.service';
 })
 export class ListComponent implements OnInit {
   companies: Company[] = [];
-  constructor(private communicatorService: CommunicatorService) {}
+  constructor(private communicatorService: CommunicatorService) {
+    this.getCompanies();
+  }
 
   ngOnInit(): void {
-    this.getCompanies();
   }
 
   getCompanies(): void {

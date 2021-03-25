@@ -1,1 +1,50 @@
-<p>view works!</p>
+<div class="container-fluid">
+  <h1 class="mt-4">View</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item active">View</li>
+  </ol>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-table mr-1"></i>
+      View
+    </div>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <dl class="row">
+          <dt class="col-sm-2">ID</dt>
+          <dd class="col-sm-10">{{ company.id }}</dd>
+          <dt class="col-sm-2">Email</dt>
+          <dd class="col-sm-10">{{ company.email }}</dd>
+          <dt class="col-sm-2">Name</dt>
+          <dd class="col-sm-10">{{ company.name }}</dd>
+          <dt class="col-sm-2">Total Employees</dt>
+          <dd class="col-sm-10">{{ company.totalEmployee }}</dd>
+          <dt class="col-sm-2">Address</dt>
+          <dd class="col-sm-10">{{ company.address }}</dd>
+          <dt class="col-sm-2">Is Company Active?</dt>
+          <dd class="col-sm-10">{{ company.isCompanyActive }}</dd>
+          <dt class="col-sm-2">Branches</dt>
+          <dd class="col-sm-10">{{ company.totalBranch }}</dd>
+          <dt class="col-sm-2">Company Branch</dt>
+          <div *ngFor="let branch of company.companyBranch">
+            <dt class="col-sm-12">Branch ID</dt>
+            <dd class="col-sm-12">
+              {{ branch.branchId }}
+            </dd>
+            <dt class="col-sm-12">Branch Name</dt>
+            <dd class="col-sm-12">
+              {{ branch.branchName }}
+            </dd>
+            <dt class="col-sm-12">Address</dt>
+            <dd class="col-sm-12">
+              {{ branch.address }}
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

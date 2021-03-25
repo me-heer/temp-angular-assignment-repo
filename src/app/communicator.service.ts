@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Company } from './company';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './data.service';
@@ -12,6 +11,7 @@ import { DataService } from './data.service';
 export class CommunicatorService {
 
   constructor(private http: HttpClient, private dataService: DataService) {
+
   }
 
   getCompanies(): Observable<Company[]>{
@@ -23,7 +23,8 @@ export class CommunicatorService {
   }
 
   addCompany(company: Company): void{
-    this.dataService.addCompany(company);
+    //this.dataService.addCompany(company);
+    this.dataService.postCompany(company).subscribe();
   }
 
 }
