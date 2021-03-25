@@ -18,6 +18,10 @@ export class CommunicatorService {
     return this.dataService.getCompanies();
   }
 
+  getCompany(id: number): Observable<Company>{
+    return this.dataService.getCompany(id);
+  }
+
   addCompany(company: Company): void{
     this.dataService.addCompany(company);
   }

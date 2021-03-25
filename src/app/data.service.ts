@@ -20,6 +20,10 @@ export class DataService {
     return companies;
   }
 
+  getCompany(id: number): Observable<Company> {
+    return of(this.db.find(c => c.id == id));
+  }
+
   addCompany(company: Company): void{
     this.db.push(company);
   }

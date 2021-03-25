@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from 'src/app/company';
 import { CommunicatorService } from '../../communicator.service';
 
@@ -19,5 +20,11 @@ export class ListComponent implements OnInit {
     this.communicatorService
       .getCompanies()
       .subscribe((companies) => (this.companies = companies));
+  }
+  delete(id :number){
+    var index = this.companies.indexOf(this.companies.find(c => c.id == id));
+    if(index > -1){
+      this.companies.splice(index, 1);
+    }
   }
 }
