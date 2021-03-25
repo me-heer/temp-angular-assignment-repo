@@ -25,11 +25,13 @@ export class EditComponent implements OnInit {
   });
 
   branchForm: FormGroup;
+  branches: FormArray;
 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private communicatorService: CommunicatorService
+    private communicatorService: CommunicatorService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,15 +54,17 @@ export class EditComponent implements OnInit {
       this.branchForm = this.formBuilder.group({
         branches: this.formBuilder.array([]),
       });
-      const branches = this.branchForm.get('branches') as FormArray;
-      this.createBranchFormGroup(this.company.companyBranch).forEach(element => {
-        branches.push(element);
-      });
-      
-    //  console.log(this.branchForm.value);
 
+      this.branches = this.branchForm.get('branches') as FormArray;
+
+      if (this.company.companyBranch != undefined) {
+        this.createBranchFormGroup(this.company.companyBranch).forEach(
+          (element) => {
+            this.branches.push(element);
+          }
+        );
+      }
     });
-
   }
 
   public addBranchFormGroup() {
@@ -87,18 +91,15 @@ export class EditComponent implements OnInit {
 
   private createBranchFormGroup(companyBranches: CompanyBranch[]): FormGroup[] {
     let branches = new Array<FormGroup>();
-    companyBranches.forEach(branch => {
+    companyBranches.forEach((branch) => {
       branches.push(
-         new FormGroup({
+        new FormGroup({
           branchId: new FormControl(branch.branchId),
           branchName: new FormControl(branch.branchName),
           address: new FormControl(branch.address),
-         })
+        })
       );
-      
     });
-//console.log('branches');
-   // console.log(branches);
     return branches;
   }
 
@@ -118,6 +119,7 @@ export class EditComponent implements OnInit {
       companyObj.companyBranch.push(branchObj[i]);
     }
     let company: Company = this.companyForm.value;
-    this.communicatorService.addCompany(companyObj);
+    this.communicatorService.updateCompany(this.companyId, companyObj);
+    this.router.navigate(['/company/list']);
   }
 }

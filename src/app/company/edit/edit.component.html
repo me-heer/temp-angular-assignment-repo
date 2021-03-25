@@ -19,7 +19,7 @@
                   </div>
                   <div class="card-body">
                     <form
-                      [formGroup]="companyForm"
+                      [formGroup]="companyForm" *ngIf="companyForm"
                       (ngSubmit)="onSubmit()"
                       class="form-group"
                     >
@@ -98,7 +98,7 @@
                       </div>
                     </form>
   
-                    <form class="form-group" [formGroup]="branchForm">
+                    <form class="form-group" [formGroup]="branchForm" *ngIf="branchForm">
                       <div formArrayName="branches">
                         <div
                           class=""
@@ -165,7 +165,7 @@
   
                     <div class="form-group mt-4 mb-0">
                       <button
-                        type="submit"
+                        type="button"
                         [disabled]="!companyForm.valid"
                         class="btn btn-primary btn-block"
                         (click)="onSubmit()"

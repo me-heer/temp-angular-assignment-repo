@@ -63,14 +63,18 @@
             display: inline-flex;
             vertical-align: middle;" class="px-1">
               <a
-                class="btn btn-outline-primary mx-2"
+                class="btn btn-outline-primary mx-1"
                 [routerLink]="['/company/edit']"
                 [queryParams]="{ id: company.id }"
                 value="Edit"
               >
                 Edit
               </a>
-              <a class="btn btn-danger mx-2" (click)="delete(company.id)">
+              <a class="btn btn-outline-info mx-1" [routerLink]="['/company/view']"
+              [queryParams]="{ id: company.id }">
+                Details
+              </a>
+              <a class="btn btn-outline-danger mx-1" (click)="delete(company.id)">
                 Delete
               </a>
             </div>

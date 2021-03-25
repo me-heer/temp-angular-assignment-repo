@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   db: Company[] = [];
+  status: string;
   baseURL: string = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) {
@@ -31,7 +32,20 @@ export class DataService {
   postCompany(company: Company): Observable<any>{
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(company);
-    console.log(body)
     return this.http.post(this.baseURL + 'company', body,{'headers':headers})
+  }
+
+  updateCompany(id:number, company: Company): Observable<any>{
+    console.log('company:', company);
+    company.id = id;
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(company);
+    console.log('body:' + body);
+    return this.http.put<any>(this.baseURL +'company/' + id, body, {'headers':headers});
+  }
+
+  deleteCompany(id: number){
+    this.http.delete(this.baseURL + 'company/' + id)
+        .subscribe(() => this.status = 'Delete successful');
   }
 }

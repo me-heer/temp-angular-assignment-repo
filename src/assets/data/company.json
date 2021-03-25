@@ -68,22 +68,6 @@
           "address": "Rajkot"
         }
       ]
-    },
-    {
-      "id": 123,
-      "email": "",
-      "name": "",
-      "totalEmployee": "",
-      "address": "",
-      "isCompanyActive": "",
-      "totalBranch": "",
-      "companyBranch": [
-        {
-          "branchId": 123,
-          "branchName": "",
-          "address": ""
-        }
-      ]
     }
   ]
 }

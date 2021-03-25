@@ -23,9 +23,10 @@ export class ListComponent implements OnInit {
       .subscribe((companies) => (this.companies = companies));
   }
   delete(id :number){
-    var index = this.companies.indexOf(this.companies.find(c => c.id == id));
-    if(index > -1){
-      this.companies.splice(index, 1);
-    }
+    this.communicatorService.deleteCompany(id);
+    // var index = this.companies.indexOf(this.companies.find(c => c.id == id));
+    // if(index > -1){
+    //   this.companies.splice(index, 1);
+    // }
   }
 }

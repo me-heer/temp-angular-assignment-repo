@@ -27,4 +27,13 @@ export class CommunicatorService {
     this.dataService.postCompany(company).subscribe();
   }
 
+  updateCompany(id:number, company: Company): void{
+    console.log('company:', company);
+    this.dataService.updateCompany(id, company).subscribe();
+  }
+
+  deleteCompany(id: number): void{
+    this.dataService.deleteCompany(id);
+  }
+
 }

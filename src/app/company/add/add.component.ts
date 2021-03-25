@@ -3,8 +3,10 @@ import {
   FormArray,
   FormBuilder,
   FormControl,
-  FormGroup
+  FormGroup,
+  Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CompanyBranch } from 'src/app/branch';
 import { CommunicatorService } from 'src/app/communicator.service';
 import { Company } from 'src/app/company';
@@ -16,9 +18,9 @@ import { Company } from 'src/app/company';
 })
 export class AddComponent implements OnInit {
   companyForm = this.formBuilder.group({
-    id: [''],
-    email: [''],
-    name: [''],
+    id: ['', Validators.required],
+    email: ['', Validators.email],
+    name: ['', Validators.required],
     totalEmployee: [''],
     address: [''],
     isCompanyActive: [''],
@@ -29,7 +31,8 @@ export class AddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private communicatorService: CommunicatorService
+    private communicatorService: CommunicatorService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -79,5 +82,6 @@ export class AddComponent implements OnInit {
     }
     let company: Company = this.companyForm.value;
     this.communicatorService.addCompany(companyObj);
+    this.router.navigate(['/company/list'])
   }
 }
